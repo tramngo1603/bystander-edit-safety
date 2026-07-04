@@ -36,7 +36,8 @@ if __name__ == "__main__":
     print(f"HBG design-history records: {rs['count']}\n")
     for r in rs["records"]:
         c = r["candidate"]
-        print(f"  {c['guide_id']:<22} {c['gene']} {c['target']['promoter_offset']:>4}  "
-              f"tier={r['evidence_tier']:<20} registry={r['registry_match']['relationship']:<20} "
+        edits = ",".join(f"-{e['promoter_offset']}" for e in c["target"]["intended_edits"])
+        print(f"  {c['guide_id']:<22} {c['gene']} {edits:<10} "
+              f"tier={r['evidence_tier']:<18} registry={r['registry_match']['relationship']:<12} "
               f"paralog_hazard={r['hbg_paralog_hazard']['paralog_hazard']!s:<5} "
               f"assays={len(r['required_validation'])}")

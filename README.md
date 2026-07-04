@@ -28,9 +28,7 @@ There is one safety score, but it is a rough tiebreaker for ordering, not the an
 and the required tests first.
 
 ## Who this is for
-A researcher deciding which guide + editor to take into the lab. You have an HBG1/HBG2 promoter edit to
-install and many candidate guides, but lab work (editing CD34+ cells, amplicon sequencing, off-target
-sequencing) is slow and expensive, so you can only test a few at a time. This tool writes down the case for each candidate first, so you can see the predicted safety profiles of such candidate before moving forward. It does not necessarily replace lab work.
+A researcher deciding which guide + editor might be flagged for safety before testing further. You have an HBG1/HBG2 promoter edit to install and many candidate guides, but lab work (editing CD34+ cells, amplicon sequencing, off-target sequencing) is slow and expensive, so you can only test a few at a time. This tool writes down the case for each candidate first, so you can see the predicted safety profiles of such candidate before moving forward with lab work.
 
 ## Status
 Research prototype for HBG1/HBG2 promoter base-editing. Outputs are predicted records for lab
@@ -46,16 +44,15 @@ confirmation (for example by amplicon NGS or CHANGE-seq-BE). Every candidate is 
 6. Check the ranking differs from naive sorts, and add per-design uncertainty (`scoring/credibility.py`).
 7. Write the design records: the main output (`design_record.py`, run via `pipeline/design_records.py`).
 
-## External tools
-You install the prediction tools yourself, under their own licenses; thin adapters call them
-(`src/base_edit_safety/adapters/`). They are not bundled here. Point to them with environment variables:
-- Edit-outcome predictor: `BE_SAFETY_BEDICT_REPO`, `BE_SAFETY_BEDICT_PYTHON`
-- Guide design / off-target search: `BE_SAFETY_CRISPOR_REPO`, `BE_SAFETY_CRISPOR_PYTHON`
-  (optionally `BE_SAFETY_CRISPOR_GENOME`, `BE_SAFETY_CRISPOR_GENOMEDIR`)
-
-The 12-gene clonal-hematopoiesis panel is built into `annotation.py`. Per-mutation driver scores are out
-of scope; if you wire them in later, the source URLs are noted in a comment there (boostDM-CH, CC-BY-NC;
-AlphaMissense, CC-BY-4.0).
+## Requirements
+- Python 3.10+. The repo itself has no pip dependencies; the prediction tools are installed separately.
+- BE-DICT (edit-outcome predictor, MIT) for Step 2. Install its checkout and its own Python env, then set
+  `BE_SAFETY_BEDICT_REPO` (holds `trained_models/`) and `BE_SAFETY_BEDICT_PYTHON`.
+- CRISPOR (guide design + off-target search) for Step 2. Install its checkout and an indexed genome, then
+  set `BE_SAFETY_CRISPOR_REPO`, `BE_SAFETY_CRISPOR_PYTHON` (optionally `BE_SAFETY_CRISPOR_GENOME`,
+  `BE_SAFETY_CRISPOR_GENOMEDIR`).
+- AlphaGenome API key for the optional Step 3 consequence scores (non-commercial). Set
+  `ALPHAGENOME_API_KEY`.
 
 ## Running
 ```
@@ -85,6 +82,23 @@ export BE_SAFETY_CRISPOR_GENOMEDIR=/path/to/genomes        # optional (default <
 pytest -q    # now also runs the integration tests
 ```
 Reference sequence is fetched from UCSC on the first run (needs network) and cached under `data/inputs/`.
+
+## Example run (HBG1/HBG2)
+One full run with all tools configured (CRISPOR + BE-DICT + AlphaGenome).
+
+**Input:** the two promoter windows (HBG1 `chr11:5,249,937-5,250,067`, HBG2 `chr11:5,254,861-5,254,991`), CRISPOR-enumerated NGG guides, and the ABE8e and BE4max editors.
+
+**Pipeline:** enumerate guides, predict edits (BE-DICT), flag CH-driver off-targets, score regulatory
+consequence (AlphaGenome), rank, write design records.
+
+**Output:** 158 edit records (36 on-target anchor edits, 122 bystanders) reduced to 30 candidate
+designs. The only CH-driver gene hit by any off-target was DNMT3A.
+
+**Findings:**
+- Lead candidate: `HBG1/HBG2_60forw_ABE8e`, installing the -124/-123 pair, about 49% predicted editing, no CH off-target (I flag it as tier PREFERRED).
+- A second -124/-123 pair (`61forw_ABE8e`) carries the DNMT3A off-target, so it needs off-target sequencing before use.
+- The other 26 designs fall below the evidenced-activity efficacy floor (currently 16%, the preclinical-activity anchor; the separate 30% clinical-precedent floor is the higher bar the PREFERRED lead clears).
+- All 30 designs map to a known natural fetal-hemoglobin edit (`analog_supported`: 22 with published-HSPC-strength support, 8 matching a clinical program), and all 30 are flagged for HBG1/HBG2 paralog confirmation (long-read or paralog-resolving assays), since every one edits the duplicated promoter.
 
 ## Related
 Off-target search here uses the reference genome only (CRISPOR, up to 4 mismatches, no bulges, no

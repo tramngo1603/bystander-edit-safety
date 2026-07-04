@@ -1,12 +1,13 @@
-"""HBG1/HBG2 design-history record generator.
+"""Build one design record per candidate guide.
 
-Turns annotated enumeration records into a signable design-rationale artifact per candidate, rather
-than a scalar rank. Each record foregrounds evidence vectors (predicted spectrum, off-target classes,
-HBG paralog hazard, CH annotation, registry relationship, evidence tier, required assays) and carries
-the composite safety_score only as a labelled, secondary, provisional signal.
+Each record collects what we know about a candidate: the predicted on-target and bystander edits, the
+off-target classes, the HBG paralog hazard, the CH-driver annotation, how it matches the HBG evidence
+registry, its evidence tier, and the lab tests needed to confirm it. It is meant to be read, not
+reduced to a single number. The safety score is included too, but only as a secondary, provisional
+tiebreaker.
 
-Multi-anchor designs (e.g. the -123/-124 synthetic pair) carry every intended on-target edit, and the
-registry match operates over the whole anchor set, not just the highest-rate edit.
+A design that installs more than one edit (for example the -123/-124 pair) keeps every intended
+on-target edit, and the registry match runs over all of them, not just the highest-rate one.
 """
 from __future__ import annotations
 

@@ -1,7 +1,7 @@
 [project]
 name = "base-edit-safety"
 version = "0.0.0"
-description = "Safety annotation and bystander-edit prediction for base-editing designs."
+description = "HBG1/HBG2 base-editing design-history and validation-planning records for fetal-hemoglobin research."
 requires-python = ">=3.10"
 dependencies = []   # external prediction tools are installed separately (see adapters/)
 
