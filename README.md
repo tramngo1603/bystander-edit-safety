@@ -1,4 +1,4 @@
-# base-edit-safety
+# Safety triage for HBG1/HBG2 fetal-hemoglobin base-editing guides
 
 A research tool for choosing base-editing guides at the **HBG1/HBG2 fetal-hemoglobin promoters**, the
 target used to switch fetal hemoglobin back on in sickle cell disease and beta-thalassemia.
@@ -23,9 +23,6 @@ For every candidate guide + editor:
 - how strong the evidence is: predicted only, similar to a known edit, or actually measured;
 - how the edit relates to known natural fetal-hemoglobin variants and the clinical HBG programs;
 - the lab tests you need to run to confirm it.
-
-There is one safety score, but it is a rough tiebreaker for ordering, not the answer. Read the evidence
-and the required tests first.
 
 ## Who this is for
 A researcher deciding which guide + editor might be flagged for safety before testing further. You have an HBG1/HBG2 promoter edit to install and many candidate guides, but lab work (editing CD34+ cells, amplicon sequencing, off-target sequencing) is slow and expensive, so you can only test a few at a time. This tool writes down the case for each candidate first, so you can see the predicted safety profiles of such candidate before moving forward with lab work.
