@@ -1,0 +1,19 @@
+# --- env / secrets ---
+.env
+*.key
+api_keys*
+# --- data (large / licensed; do not push raw) ---
+data/inputs/*
+data/outputs/*
+!data/inputs/.gitkeep
+!data/outputs/.gitkeep
+# --- os cruft ---
+.DS_Store
+# --- python ---
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+*.egg-info/
+.pytest_cache/
+.ipynb_checkpoints/

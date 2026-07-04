@@ -1,0 +1,11 @@
+# External prediction tools, installed separately, each under its OWN license.
+# Wrap-don't-vendor: call via src/base_edit_safety/adapters/, do not copy source/weights in.
+# Some require a license click-through or API key (HALT for the human at that point).
+#
+# BE-DICT            base-editing outcome predictor (MIT)            spine
+# CRISPOR / BE-Designer  guide design (mixed / free)
+# AlphaGenome        regulatory consequence (NON-COMMERCIAL; key/terms)   coding-out not allowed to train models
+# Evo 2              DNA LM regulatory priors (Apache-2.0; GPU-heavy)
+# AlphaMissense      coding missense only (CC-BY; precomputed Zenodo files)
+# boostDM-CH         CH-driver scores + gene set (CC-BY-NC)          annotation only
+# BE-dataHIVE        baseline reference dataset (Apache/CC-BY)       reference only; not currently wired
