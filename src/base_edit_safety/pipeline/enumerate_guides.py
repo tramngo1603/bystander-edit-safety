@@ -22,7 +22,7 @@ from . import environment
 from .model import EditRecord, spectrum_to_records
 
 # Step 0 proximal-promoter modelling windows (-210..-80 vs cap), GRCh38. These HBG1/HBG2 coordinates
-# are the intentional, hard-coded product scope of this prototype (see docs/step0-coordinates.md),
+# are the intentional, hard-coded product scope of this prototype (see documentation/step0-coordinates.md),
 # not a placeholder to be generalized.
 WINDOWS = {
     "HBG1": ("chr11", 5_249_937, 5_250_067),

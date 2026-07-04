@@ -43,7 +43,7 @@ class RegistryEntry:
     note: str
 
 
-# Real citations (PMIDs) for the Step 0 HPFH positions (from docs/step0-coordinates.md).
+# Real citations (PMIDs) for the Step 0 HPFH positions (from documentation/step0-coordinates.md).
 _CITATIONS = {
     198: ("PMID 2430647 (clinical)", "PMID 28659276 (KLF1 mechanism)", "PMID 37400614 (HSPC ABE)"),
     175: ("PMID 2449926 (clinical HBG2)", "PMID 25971621 (TAL1 mechanism)", "PMID 37400614 (HSPC ABE)"),
@@ -55,7 +55,7 @@ _CITATIONS = {
           "PMID 36006707 (exact -113 A>G ABE8e)", "PMID 37400614 (HSPC ABE)"),
 }
 
-# Evidence strength per HPFH offset (docs/step0-coordinates.md engineering-anchor tiering).
+# Evidence strength per HPFH offset (documentation/step0-coordinates.md engineering-anchor tiering).
 _STRENGTH = {
     198: "published_hspc",   # HSPC ABE (Mayuranathan 2023)
     175: "published_hspc",   # strongest exact-allele HSPC ABE (Mayuranathan 2023)

@@ -3,7 +3,7 @@ HBG1_TSS_GRCH38 = 5_249_857
 HBG2_TSS_GRCH38 = 5_254_781
 OFFSET = 4924
 
-# (promoter_offset, hbg1_pos, hbg2_pos) for in-scope positions; from docs/step0-coordinates.md
+# (promoter_offset, hbg1_pos, hbg2_pos) for in-scope positions; from documentation/step0-coordinates.md
 IN_SCOPE = [
     (198, 5_250_055, 5_254_979),
     (175, 5_250_032, 5_254_956),

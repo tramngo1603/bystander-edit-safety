@@ -2,7 +2,7 @@
 
 The types here move in order: a Guide (or an editor-agnostic CandidateGuide) goes to a predictor,
 which returns an EditSpectrum, which reduces to one EditRecord per edited position. Both allele
-orientations are always carried (see docs/step0-coordinates.md): a single ref_base is unsafe because
+orientations are always carried (see documentation/step0-coordinates.md): a single ref_base is unsafe because
 the literature uses promoter/sense-strand alleles while genome files use the genomic plus-strand.
 """
 from __future__ import annotations

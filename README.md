@@ -8,7 +8,7 @@ any lab work: what the edit does, what could go wrong, and which lab tests would
 reduce a design to a single "safety" number.
 
 Scope is narrow on purpose. The HBG1/HBG2 coordinates and the in-scope edits are fixed in the code (see
-[docs/step0-coordinates.md](docs/step0-coordinates.md) and `io/step0_anchor.py`), not something to
+[documentation/step0-coordinates.md](documentation/step0-coordinates.md) and `io/step0_anchor.py`), not something to
 generalize yet in this first version of the tool. This helps you pick which designs to test first. It is
 not a general editing platform and not a clinical tool.
 
@@ -46,13 +46,13 @@ pytest -q                  # unit tests; integration tests skip until the extern
 python -m base_edit_safety.pipeline.design_records    # main output: HBG design records -> data/outputs/
 ```
 Installing the external prediction tools and running the full pipeline is covered in
-[docs/setup.md](docs/setup.md).
+[documentation/setup.md](documentation/setup.md).
 
 ## Documentation
-- [Setup and running](docs/setup.md) - requirements, external tools, the AlphaGenome API key, and full validation.
-- [Pipeline and scope](docs/pipeline.md) - the seven steps, the off-target scope, and related work.
-- [Example run](docs/example-run.md) - a real HBG1/HBG2 run with its input, output, and findings.
-- [Coordinates](docs/step0-coordinates.md) - the HBG1/HBG2 windows and the in-scope edits.
+- [Setup and running](documentation/setup.md) - requirements, external tools, the AlphaGenome API key, and full validation.
+- [Pipeline and scope](documentation/pipeline.md) - the seven steps, the off-target scope, and related work.
+- [Example run](documentation/example-run.md) - a real HBG1/HBG2 run with its input, output, and findings.
+- [Coordinates](documentation/step0-coordinates.md) - the HBG1/HBG2 windows and the in-scope edits.
 
 ## License
 Apache-2.0. Some external tools are non-commercial or copyleft; using them means resolving those upstream

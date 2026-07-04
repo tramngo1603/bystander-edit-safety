@@ -1,6 +1,6 @@
 """Step 0 anchor: locked HBG1/HBG2 promoter coordinates and in-scope edit positions.
 
-Copied exactly from docs/step0-coordinates.md (LOCKED, verified). Do not re-derive coordinates
+Copied exactly from documentation/step0-coordinates.md (LOCKED, verified). Do not re-derive coordinates
 here; this module only structures the verified table and emits it as EditRecords. It carries both
 allele orientations (genomic plus-strand and promoter/sense-strand). On load, it checks the
 4,924 bp HBG1/HBG2 homology invariant and stops the build if it fails (a hard build-stop).
@@ -49,7 +49,7 @@ class AnchorPosition:
         return HBG2_TSS + self.promoter_offset
 
 
-# Evidentiary tiers, per docs/step0-coordinates.md. rsIDs are gene-specific and never
+# Evidentiary tiers, per documentation/step0-coordinates.md. rsIDs are gene-specific and never
 # cross-assigned between HBG1 and HBG2.
 DB = "DB-CONFIRMED"
 UNVERIFIED = "variant_db_UNVERIFIED"

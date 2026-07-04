@@ -22,7 +22,7 @@ _DISPLAY_FILE = outputs.output_path("bystander_display.json")
 EDITOR_NOTE = ("bystander = accidental edits NEAR the target (within the editing window); "
                "this is NOT off-target (genome-wide) analysis")
 
-# Primary engineering anchors (docs/step0-coordinates.md): strongest exact-allele HSPC evidence.
+# Primary engineering anchors (documentation/step0-coordinates.md): strongest exact-allele HSPC evidence.
 PRIMARY_ANCHORS = {175, 113, 123, 124}
 
 # Display groupings of the in-scope positions (the -123/-124 synthetic pair shown together).
